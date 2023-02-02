@@ -52,10 +52,14 @@ try {
 			
 			File file = new File("copied.jpg");
 			FileOutputStream fos = new FileOutputStream(file);
-			int i = iStream.read();
-			while(i!= -1) {
-				fos.write(i);
-				i= iStream.read();
+//			int i = iStream.read();
+//			while(i!= -1) {
+//				fos.write(i);
+//				i= iStream.read();
+//			}
+			byte [] b = new byte[2048];
+			while(iStream.read(b)>0) {
+				fos.write(b);
 			}
 			System.out.println(id+"\t"+nameString+"\t"+file.getAbsolutePath());
 			
