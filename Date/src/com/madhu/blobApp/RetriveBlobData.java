@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import org.apache.commons.io.IOUtils;
+
 import com.madhu.JavaUtil.JavaUtil;
 public class RetriveBlobData
 {
@@ -57,10 +59,14 @@ try {
 //				fos.write(i);
 //				i= iStream.read();
 //			}
-			byte [] b = new byte[2048];
+			
+			//using buffered data
+			/*byte [] b = new byte[2048];
 			while(iStream.read(b)>0) {
 				fos.write(b);
-			}
+			}*/
+			//cpoying data from is to fos
+			IOUtils.copy(iStream, fos);
 			System.out.println(id+"\t"+nameString+"\t"+file.getAbsolutePath());
 			
 			}
